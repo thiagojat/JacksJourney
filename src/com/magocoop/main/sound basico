@@ -1,0 +1,46 @@
+private AudioClip clip;
+	
+	public static final Sound basedMusic = new Sound ("/music.wav");
+	public static final Sound hurtFX = new Sound ("/hurt.wav");
+	public static final Sound enemyDeathFX = new Sound ("/enemy_death.wav");
+	public static final Sound selectFX = new Sound ("/select.wav");
+	public static final Sound shootFX = new Sound ("/shot.wav");
+	public static final Sound pickupPackFX = new Sound ("/pickup_pack.wav");
+	public static final Sound pickupAmmoFX = new Sound ("/pickup_ammo.wav");
+	public static final Sound pickupWeaponFX = new Sound ("/pickup_gun.wav");
+
+	private Sound(String name) {
+		try {
+			clip = Applet.newAudioClip(Sound.class.getResource(name));
+		}catch(Throwable e) {} 
+	}
+	
+	public void play() {
+		try {
+			new Thread() {
+				@SuppressWarnings("deprecation")
+				public void run() {
+					clip.play();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+	public void loop() {
+		try {
+			new Thread() {
+				public void run() {
+					clip.loop();
+				}
+			}.start();
+		}catch(Throwable e) {}
+	}
+	
+		public static Clips bgMusic = load("/music.wav", 1);
+		public static Clips hurtFX = load("/hurt.wav", 1);
+		public static Clips enemyDeathFX = load("/enemy_death.wav", 1);
+		public static Clips selectFX = load("/select.wav", 1);
+		public static Clips shootFX = load("/shot.wav", 1);
+		public static Clips pickupPackFX = load("/pickup_pack.wav", 1);
+		public static Clips pickupAmmoFX = load("/pickup_ammo.wav", 1);
+		public static Clips pickupWeaponFX = load("/pickup_gun.wav", 1);
